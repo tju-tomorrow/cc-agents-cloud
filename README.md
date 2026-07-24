@@ -39,4 +39,19 @@ Run tests:
 ./gradlew test
 ```
 
+## Register a user
+
+```bash
+curl -i http://localhost:8080/v1/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "email": "victor@example.com",
+    "password": "correct-horse-battery-staple",
+    "displayName": "Victor"
+  }'
+```
+
+The endpoint normalizes email addresses, hashes passwords with Argon2id, and
+creates the user plus its password identity in one database transaction.
+
 Model API keys, conversations, memories, attachments, and workspace paths remain local to cc-agents Desktop and must never be persisted by this service.
