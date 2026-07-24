@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: cc-agents-cloud
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/cc_agents}
+    username: ${DATABASE_USER:cc_agents}
+    password: ${DATABASE_PASSWORD:cc_agents_dev}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized
+
